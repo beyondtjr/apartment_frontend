@@ -9,6 +9,7 @@ import ProtectedExample from './Pages/ProtectedExample';
 import PublicExample from './Pages/PublicExample'
 import Details from './Pages/Details'
 import { getApartments, createApartment, getApartment} from './api/index'
+import NewApt from './Pages/NewApt'
 
 class App extends Component {
   constructor(props){
@@ -31,6 +32,35 @@ class App extends Component {
     })
   }
 
+  handleNewApartment = (newApartment) => {
+    console.log("New Apartment TRY", newApartment)
+    createApartment(newApartment)
+    .then(successApartment => {
+      // apartments list with successCorgi added
+      console.log("SUCCESS! New Apt: ", successApartment);
+      this.setState({
+        // corgis: ,
+        newApartmentSuccess: true
+      })
+    })
+  }
+
+  submitApartment= (apartment) => {
+    let apartments = this.state.apartments
+    apartments[apartments.length] = {id: (apartments.length), street: apartment.street,
+
+
+            unit: apartment.unit,
+            city: apartment.city,
+            state: apartment.state,
+            postalcode: apartment.postalcode,
+            country: apartment.country,
+            manager_name: apartment.manager_name,
+            phone_number: apartment.phone_number,
+            hours: apartment.hours}
+    console.log("HELLO")
+    this.setState({apartments: apartments})
+  }
 
   render() {
     console.log(this.state.apartments)
@@ -43,6 +73,7 @@ class App extends Component {
 					{(this.auth.loggedIn())
 					// if logged in
 					? <Switch>
+          <Route path="/apartments/new" render={(props) => <NewApt handleNewApartment={this.handleNewApartment} submitApartment={this.submitApartment} newApartmentSuccess={this.state.newApartmentSuccess}/>} />
             <Route path="/apartments/:id" component={Details} />
 						<Route exact path="/apartments" component={PublicExample} />
 						<Route path="/protected" component={ProtectedExample} />

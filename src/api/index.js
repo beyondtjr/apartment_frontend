@@ -12,6 +12,7 @@ let getApartments = function() {
 }
 
 let createApartment = function(apartment) {
+  console.log(apartment);
   return fetch(BASE + '/apartments', {
     body: JSON.stringify(apartment),
     headers: {

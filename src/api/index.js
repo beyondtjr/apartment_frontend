@@ -26,6 +26,7 @@ let createApartment = function(apartment) {
 }
 
 let getApartment = function(id) {
+  console.log("this is my id in the getappartment function " + id)
   return fetch(BASE + '/apartments/' + id)
     .then((resp) => {
       let json = resp.json()

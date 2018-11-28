@@ -6,16 +6,24 @@ class Navmenu extends Component {
     return(
       <Navbar>
       <Navbar.Header>
-        <Navbar.Brand>
+        <Navbar.Brand pullLeft>
           <a href="#home">HomeFinder</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
-        <Navbar.Text>
-          Hello: <Navbar.Link href="#">User Logged In "Pass instance of user" </Navbar.Link>
+        <Navbar.Text pullRight>
+          Logged In as: <Navbar.Link href="#">{this.props.userEmail}</Navbar.Link>
         </Navbar.Text>
-        <Navbar.Text pullRight>Have a great day!</Navbar.Text>
+
+        <Navbar.Text> <a href="/apartments"> Home </a> </Navbar.Text>
+        <Navbar.Text> <a href="/login"> Login </a> </Navbar.Text>
+        <Navbar.Text> <a href="/apartments"> Apartment Details  </a> </Navbar.Text>
+        <Navbar.Text> <a href="/apartments"> Contact Leasing Office  </a> </Navbar.Text>
+        <Navbar.Text> <a href="/register"> Register </a> </Navbar.Text>
+
+        <Navbar.Text pullRight></Navbar.Text>
+
       </Navbar.Collapse>
     </Navbar>
   )

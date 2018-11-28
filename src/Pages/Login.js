@@ -44,7 +44,6 @@ class Login extends Component {
         {this.state.errors.password && <div>Error: Password  {this.state.errors.password[0]}</div>}
         <button onSubmit={this.onSubmit}>Login</button>
       </form>
-      {this.state.registerSuccess && <Redirect to="/protected" />}
     </main>
     )
   }
@@ -60,6 +59,7 @@ class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault()
     console.log(this.auth + "im auth");
+    this.props.getUser(this.state.form.user.email)
     this.auth.login(this.state.form)
     .then(json => {
       console.log("Got to second then:", json)
@@ -69,12 +69,17 @@ class Login extends Component {
           errors: json.errors
         })
       } else {
-        this.setState({
-          registerSuccess: true
-        })
+        console.log("preparing to redirect")
+        this.props.statusUpdate()
+        // this.setState({
+        //   registerSuccess: true
+        // })
+
       }
     })
   }
+
+
 }
 
 

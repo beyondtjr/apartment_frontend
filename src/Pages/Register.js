@@ -76,6 +76,9 @@ class RegisterPage extends Component {
 	onSubmit = (e) => {
 		e.preventDefault()
 		console.log(this.auth);
+		console.log("the registration form is: " +this.state.form)
+		console.log(this.state.form)
+
 		this.auth.register(this.state.form)
 		.then(json => {
 			console.log("Got to second then:", json)

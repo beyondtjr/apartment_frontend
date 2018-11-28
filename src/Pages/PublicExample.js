@@ -27,13 +27,16 @@ class PublicExample extends Component {
                   {this.state.apartments.map(el => {
                     return (
                       <div>
-                        <h2>
+                        <h3>
+                        <a href={`/apartments/${el.id}`}>
+                        <img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c02fb96f9cfc16d3649835b75d1b2033&auto=format&fit=crop&w=1350&q=80" style={{width:300}}/>
+                        <br/>
+
                         Street: {el.street},
-                        Unit: {el.unit}, {el.city}, {el.postalcode}, {el.state}, {el.country}</h2>
-                        <h2>Manager Information</h2>
-                        <p>Name: {el.manager_name}</p>
-                        <p>Contact number: {el.phone_number}</p>
-                        <p>{el.hours}</p>
+                        Unit: {el.unit}, {el.city}, {el.postalcode}, {el.state}, {el.country}
+                        </a>
+                        </h3>
+
                       </div>
                     )
                   })}

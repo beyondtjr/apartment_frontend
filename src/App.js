@@ -7,13 +7,17 @@ import Login from './Pages/Login';
 import AuthService from './services/index.js'
 import ProtectedExample from './Pages/ProtectedExample';
 import PublicExample from './Pages/PublicExample'
+import Details from './Pages/Details'
 import { getApartments, createApartment, getApartment} from './api/index'
 
 class App extends Component {
   constructor(props){
     super(props)
+    this.auth = new AuthService()
     this.state = {
-      apartments: []
+      apartments: [],
+      authenticated: this.auth.loggedIn(),
+      user: ""
     }
   }
 
@@ -30,31 +34,39 @@ class App extends Component {
 
   render() {
     console.log(this.state.apartments)
-    let auth = new AuthService()
     return (
       <div>
-        <Navmenu />
+        <Navmenu userEmail={this.state.user}/>
         <hr/>
 
         <Router>
-					{(auth.loggedIn())
+					{(this.auth.loggedIn())
 					// if logged in
 					? <Switch>
-						<Route path="/public" component={PublicExample} />
+            <Route path="/apartments/:id" component={Details} />
+						<Route exact path="/apartments" component={PublicExample} />
 						<Route path="/protected" component={ProtectedExample} />
 						<Route path="/register" component={Register} />
+            <Redirect from="/login" to="/protected" />
 					</Switch>
 					// if not logged in (ie Guest User)
 					: <Switch>
-						<Route path="/login" component={Login} />
-						<Route path="/public" component={PublicExample} />
-						<Redirect from="/protected" to="/register" />
+						<Route path="/login" render ={ (props) => <Login statusUpdate={this.statusUpdate} {...props} getUser={this.getUser}/> } />
+						<Route path="/apartments" component={PublicExample} />
 						<Route path="/register" component={Register} />
+            <Redirect from="/protected" to="/register" />
 					</Switch>}
 				</Router>
 
       </div>
     );
+  }
+
+  statusUpdate = () => {
+    this.setState({authenticated: this.auth.loggedIn()})
+  }
+  getUser = (userEmail) => {
+    this.setState({user: userEmail})
   }
 }
 

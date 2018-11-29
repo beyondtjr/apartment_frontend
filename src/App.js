@@ -68,7 +68,6 @@ class App extends Component {
     return (
       <div>
         <Navmenu userEmail={this.state.user}/>
-        <hr/>
 
         <Router>
 					{(this.auth.loggedIn())

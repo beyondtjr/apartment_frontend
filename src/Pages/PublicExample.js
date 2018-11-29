@@ -36,7 +36,7 @@ class PublicExample extends Component {
                         Address: <br/>
                         {el.street} { }
                         Unit: {el.unit} <br/>
-                        {el.city}, {el.state} {el.postalcode} {el.country}
+                        {el.city} {el.state} {el.postalcode} {el.country}
                         </a>
                         </h3>
 

@@ -1,12 +1,18 @@
 .ApartmentList {
+  background-image: url("https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-0.3.5&s=98bd518c5ac64ff5f6e601ac57c6f24b&auto=format&fit=crop&w=1275&q=80");
+  background-size: cover;
+  background-attachment: fixed;
   display:flex;
   justify-content: center;
   flex-wrap: wrap;
   padding: 30px;
+
 }
 
 .Navbar{
-  background-color: black;
+
+  width: 100vw;
+  /* margin-bottom: 0px; */
 }
 
 h3 a {
@@ -15,6 +21,15 @@ h3 a {
 }
 
 .IndividualList {
-  margin-left: 30px;
-  margin-right: 30px;
+  border-radius: 20px;
+  background-color: rgba(0,0,0,.51);
+  padding: 25px 10px 10px 10px;;
+  text-align:center;
+  margin: 10px 30px;
+
+}
+
+* {
+  margin: 0px 0px;
+  padding: 0px;
 }

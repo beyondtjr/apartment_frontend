@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 class Navmenu extends Component {
   render() {
     return(
-      <Navbar>
+      <Navbar className="Navbar">
       <Navbar.Header>
         <Navbar.Brand pullLeft>
           <a href="#home">HomeFinder</a>

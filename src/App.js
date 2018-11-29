@@ -10,6 +10,7 @@ import PublicExample from './Pages/PublicExample'
 import Details from './Pages/Details'
 import { getApartments, createApartment, getApartment} from './api/index'
 import NewApt from './Pages/NewApt'
+import './Pages/App.css'
 
 class App extends Component {
   constructor(props){

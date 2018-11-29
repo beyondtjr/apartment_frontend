@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PublicExample from './Pages/PublicExample.css'
 
 class ProtectedExample extends Component {
     render() {

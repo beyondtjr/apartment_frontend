@@ -7,10 +7,11 @@
   flex-wrap: wrap;
   padding: 30px;
 
+
 }
 
 .Navbar{
-
+  position:fixed;
   width: 100vw;
   /* margin-bottom: 0px; */
 }
@@ -25,7 +26,7 @@ h3 a {
   background-color: rgba(0,0,0,.51);
   padding: 25px 10px 10px 10px;;
   text-align:center;
-  margin: 10px 30px;
+  margin: 90px 30px 10px 30px;
 
 }
 

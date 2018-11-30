@@ -27,7 +27,7 @@ class RegisterPage extends Component {
 		return (
 			<main>
 				<h2>Welcome! Register here.</h2>
-				<form onSubmit={this.onSubmit}>
+				<form className="Formfield" onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						name="firstName"
@@ -91,6 +91,7 @@ class RegisterPage extends Component {
 				this.setState({
 					registerSuccess: true
 				})
+				this.props.statusUpdate()
 			}
 		})
 	}

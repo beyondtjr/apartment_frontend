@@ -15,7 +15,8 @@ class NewApt extends Component {
         country: 'Djibouti',
         manager_name: '',
         phone_number: '858-555-5555',
-        hours: '5AM-5PM'
+        hours: '5AM-5PM',
+        userId: ""
       }
     }
   }

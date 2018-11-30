@@ -10,8 +10,12 @@
 
 }
 
+.Formfield {
+
+}
+
 .Navbar{
-  position:fixed;
+  /* position:fixed; */
   width: 100vw;
   /* margin-bottom: 0px; */
 }

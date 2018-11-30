@@ -65,9 +65,11 @@ class App extends Component {
 
   render() {
     console.log(this.state.apartments)
+    console.log("Authentication status" + this.state.authenticated);
+  
     return (
       <div>
-        <Navmenu userEmail={this.state.user}/>
+        <Navmenu authenticated={this.state.authenticated} userEmail={this.state.user} statusUpdate={this.statusUpdate}/>
 
         <Router>
 					{(this.auth.loggedIn())
@@ -84,7 +86,7 @@ class App extends Component {
 					: <Switch>
 						<Route path="/login" render ={ (props) => <Login statusUpdate={this.statusUpdate} {...props} getUser={this.getUser}/> } />
 						<Route path="/apartments" component={PublicExample} />
-						<Route path="/register" component={Register} />
+						<Route path="/register" render={(props) => <Register statusUpdate={this.statusUpdate} {...props} />} />
             <Redirect from="/protected" to="/register" />
 					</Switch>}
 				</Router>

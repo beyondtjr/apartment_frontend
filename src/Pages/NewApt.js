@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { FormControl, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
+import AuthService from '../services/index.js'
 
 class NewApt extends Component {
   constructor(props) {
     super(props)
+    this.auth = new AuthService()
     this.state = {
       form:{
         street: '',
@@ -16,7 +18,7 @@ class NewApt extends Component {
         manager_name: '',
         phone_number: '858-555-5555',
         hours: '5AM-5PM',
-        userId: ""
+        user_id: this.auth.getUserId()
       }
     }
   }
@@ -64,7 +66,9 @@ class NewApt extends Component {
               value={this.state.form.manager_name}
             />
           </FormGroup>
-        <Button onClick={this.handleSubmit}id="submit" type="submit">Submit Apartment</Button>
+          <div className="formContainer"> 
+        <center><Button className="button" onClick={this.handleSubmit}id="submit" type="submit">Submit Apartment</Button></center>
+        </div>
       </form>
       {this.props.newApartmentSuccess && <Redirect to="/apartments" />}
     </div>

@@ -11,6 +11,30 @@ let getApartments = function() {
       console.log(error))
 }
 
+
+let getUserApartments = function(user_id){
+  return fetch(BASE + '/apartments/users/' + user_id)
+    .then((resp) => {
+      let json = resp.json()
+      console.log(json);
+      return json
+    })
+    .catch((error) =>
+      console.log(error))
+    }
+
+let getEmail = function(user_id){
+  return fetch(BASE + '/apartments/email/' + user_id)
+    .then((resp) => {
+      let json = resp.json()
+      console.log(json);
+      return json
+    })
+    .catch((error) =>
+      console.log(error))
+    }
+
+
 let createApartment = function(apartment) {
   console.log(apartment);
   return fetch(BASE + '/apartments', {
@@ -26,6 +50,16 @@ let createApartment = function(apartment) {
     })
 }
 
+let deleteApartment = function(id) {
+  console.log(id);
+  return fetch(BASE + '/apartments/' + id, {
+    method: "DELETE"
+  })
+  .then((resp) => {
+      console.log(resp)
+  })
+}
+
 let getApartment = function(id) {
   console.log("this is my id in the getappartment function " + id)
   return fetch(BASE + '/apartments/' + id)
@@ -37,5 +71,5 @@ let getApartment = function(id) {
 }
 
 export {
-  getApartments, createApartment, getApartment
+  getApartments, createApartment, getApartment, getUserApartments, deleteApartment, getEmail
 }

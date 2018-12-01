@@ -59,7 +59,7 @@ class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault()
     console.log(this.auth + "im auth");
-    this.props.getUser(this.state.form.user.email)
+    // this.props.getUser(this.state.form.user.email)
     this.auth.login(this.state.form)
     .then(json => {
       console.log("Got to second then:", json)

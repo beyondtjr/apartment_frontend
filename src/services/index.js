@@ -76,6 +76,7 @@ export default class AuthService {
 
 	getUserId = () => {
 		const token = decode(this.getToken(), {header:true});
+		console.log(token);
 		return token.sub
 	}
 

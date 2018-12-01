@@ -3,7 +3,12 @@ import React, { Component } from 'react'
 class ProtectedExample extends Component {
     render() {
         return (
-            <div>This page is protected!</div>
+            <div>
+              <h1>
+                Welcome!
+              </h1>
+            </div>
+
         )
     }
 }

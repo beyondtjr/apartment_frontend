@@ -8,9 +8,11 @@ import AuthService from './services/index.js'
 import ProtectedExample from './Pages/ProtectedExample';
 import PublicExample from './Pages/PublicExample'
 import Details from './Pages/Details'
-import { getApartments, createApartment, getApartment} from './api/index'
+import { getApartments, createApartment, getApartment, getEmail} from './api/index'
 import NewApt from './Pages/NewApt'
+import UserApts from './Pages/UserApts'
 import './Pages/App.css'
+
 
 class App extends Component {
   constructor(props){
@@ -31,6 +33,7 @@ class App extends Component {
         apartments: APIapartments
       })
     })
+
   }
 
   handleNewApartment = (newApartment) => {
@@ -66,7 +69,7 @@ class App extends Component {
   render() {
     console.log(this.state.apartments)
     console.log("Authentication status" + this.state.authenticated);
-  
+
     return (
       <div>
         <Navmenu authenticated={this.state.authenticated} userEmail={this.state.user} statusUpdate={this.statusUpdate}/>
@@ -76,11 +79,12 @@ class App extends Component {
 					// if logged in
 					? <Switch>
           <Route path="/apartments/new" render={(props) => <NewApt handleNewApartment={this.handleNewApartment} submitApartment={this.submitApartment} newApartmentSuccess={this.state.newApartmentSuccess}/>} />
+            <Route path="/apartments/user" component={UserApts} />
             <Route path="/apartments/:id" component={Details} />
 						<Route exact path="/apartments" component={PublicExample} />
 						<Route path="/protected" component={ProtectedExample} />
 						<Route path="/register" component={Register} />
-            <Redirect from="/login" to="/protected" />
+            <Redirect from="/login" to="/apartments" />
 					</Switch>
 					// if not logged in (ie Guest User)
 					: <Switch>
@@ -98,9 +102,9 @@ class App extends Component {
   statusUpdate = () => {
     this.setState({authenticated: this.auth.loggedIn()})
   }
-  getUser = (userEmail) => {
-    this.setState({user: userEmail})
-  }
+  // getUser = (userEmail) => {
+  //   this.setState({user: userEmail})
+  // }
 }
 
 export default App;
